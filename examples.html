@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>pyAMG by Inria - Mesh Adaptation</title>
+		<title>pyAMG by Inria - Examples</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -25,73 +25,308 @@
 				<!-- Two -->
 					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
 						<div class="content">
-							<h2>Examples</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+							<h1>pyAMG Examples</h1>
+							<p>This page presents some examples of mesh adaptation using pyAMG.</p>
+							
+							
+							<h3>Stand-alone examples</h3>
 							
 							<ul>
-								<li>Case 1</li>
-								<li>Case 1</li>
-								<li>Case 1</li>
+								<li><a href="#3drefine">Simple 3D uniform refinement</a></li>
+								<li><a href="#3danalytical">Control of the interpolation error of an analytical function</a></li>
+								<li><a href="#3dsizing">Mesh adaptation according to a sizing field</a></li>
+							</ul>
+							
+							<h3>Examples using SU2</h3>
+							
+							<ul>
+								<li><a href="#su2amg">SU2/pyAMG installation</a></li>
+								<li><a href="#2dnaca">Adaptation of a 2D NACA airfoil</a></li>
+								<li><a href="#m6wing">Adaptive ONERA M6 wing</a></li>
+								<li><a href="#crm">Adaptive transonic CRM</a></li>
 							</ul>
 							
 							<ul class="actions fit">
-								<li><a href="index.html" class="button">Back to main page</a></li>
+								<li><a href="index.html" class="button smooth-scroll-middle">Back to main page</a></li>
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/spotlight01.jpg" alt="" />
+							<img src="images/spotlight02.png" alt="" />
 						</div>
 					</section>
 
-				<!-- Three -->
-					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" id="unif_refinement">
-						<div class="content">
-							<h2>A simple uniform refinement</h2>
-							<p>The simpliest adaptation consists in performing a uniform refinement. This is done easily by setting the remeshing option 'hmax' or 'target' (to fix a targetted number of elements).</p>
+					<!-- -->
+
+					<section class="wrapper style1 align-left" id="3drefine">
+						<div class="inner">
+							<h2>A simple 3D uniform refinement</h2>
 							<p>
-								<code>Test()</code>
-								<pre><code class="language-python">     remesh_options = {}
-     remesh_options['hmax'] = 0.1
-     remesh_options['logfile'] = "remesh-unif.log"
-     
-     
-     print " remeshing options : "
-     print remesh_options
-     
-     msh3d = pyamg.read_mesh("cube.meshb")
-     msh3d_unif = pyamg.adapt_mesh(msh3d, remesh_options)
-     
-     
-     print "\n output : cube_unif.meshb \n"   
-     pyamg.write_mesh(msh3d_unif,"cube_unif.meshb")</code></pre>
+								This simple 3D example consists in reading an initial mesh of a cube, adapting it using a smaller specified edge size, and writing the final adapted mesh.	
+							</p>
+							
+							
+							<!-- 
+							<figure>
+							  <img src="./images/testcases/scale.png" alt="Girl in a jacket" style="width=100%">
+							  <figcaption>Trulli, Puglia, Italy.</figcaption>
+							</figure>
+							-->
+								
+							<div style="width : 800px;">
+							<p>
+								<pre><code class="language-python">import pyamg, math, numpy as np
+									
+# Define maximal edge size
+remesh_options = {}
+remesh_options['hmax'] = 0.1
+
+# Read initial mesh
+msh3d = pyamg.read_mesh("cube.meshb")
+msh3d_unif = pyamg.adapt_mesh(msh3d, remesh_options)
+
+# Output refined mesh
+pyamg.write_mesh(msh3d_unif,"cube_unif.meshb")</code></pre>
 								
 							</p>
+						</div>
+						
+						<!--
+						<div class="gallery style2 medium lightbox onscroll-fade-in" style="margin-bottom: 20px;">
+							<article>
+								<a href="images/gallery/fulls/04.jpg" class="image">
+									<img src="images/gallery/thumbs/04.jpg" alt="" />
+								</a>
+								<div class="caption">
+									<h3>Initial mesh</h3>
+									<ul class="actions fixed">
+										<li><span class="button small">Details</span></li>
+									</ul>
+								</div>
+							</article>
+						</div>
+							
+							-->
+						
+						
+						<table>
+							<tr>
+								<td><figure>
+						  <img src="./images/testcases/cube.png" alt="Initial mesh">
+						  <figcaption><p>Initial mesh.</p></figcaption>
+						</figure></td>
+								<td><figure>
+						  <img src="./images/testcases/cube_unif.png" alt="Final mesh">
+						  <figcaption><p>Final mesh.</p></figcaption>
+						</figure></td>
+							</tr>
+						</table>
+
+						
+						<ul class="actions stacked">
+							<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
+						</ul>
+						
+					</section>
+					
+					<!-- -->
+
+					<section class="wrapper style1 align-left" id="3danalytical">
+						<div class="inner">
+							<h2>Control of the interpolation error of an analytical function</h2>
+							<p>In this example, an initial mesh of a cube is loaded and an anisotropic analytical function is computed at each of its nodes.</p>
+							
+							<div style="width : 800px;">
+							<p>
+								<pre><code class="language-python">import pyamg, math, numpy as np
+
+def analytical_fun(x,y,z=1):
+    xyz = (x-0.4)*(y-0.4)*(z-0.4)
+    if( xyz  <= (-1.*math.pi/50.)): return 0.1*math.sin(50.*xyz)
+    elif(xyz <= 2.*math.pi/50.):    return     math.sin(50.*xyz)
+    else:                           return 0.1*math.sin(50.*xyz)
+	
+def create_sensor(mesh):
+    sensor = []
+    crd    = []
+    if   ( 'xyz' in mesh ): 
+        crd = mesh['xyz']
+        for x in crd:
+            sensor.append(analytical_fun(x[0],x[1],x[2]))
+    elif ( 'xy' in mesh ):
+        crd = mesh['xy']  
+        for x in crd:
+            sensor.append(analytical_fun(x[0],x[1]))
+    return sensor
+
+# Load mesh
+msh3d = pyamg.read_mesh("cube.meshb")
+
+# Create the sensor for adaptation
+msh3d['sensor'] = create_sensor(msh3d)</code></pre>
+							</p>
+						</div>	
+						
+<p>
+Then, the <code class="language-python">'Lp'</code> remeshing option is set such that the interpolation error of the sensor will be controled in L^2 norm. Five adaptive iterations are performed to capture the anisotropy, and the final mesh is outputted.
+</p>						
+							
+							<div style="width : 800px;">
+							<p>
+								<pre><code class="language-python"># Define remeshing options
+remesh_options              = {}
+remesh_options['Lp']        = 2
+remesh_options['gradation'] = 1.5
+remesh_options['target']    = 20000
+
+# Adapt the mesh, perform 5 iterations
+print  "   Anisotropic adaptation : iteration 1"
+msh3d_aniso = pyamg.adapt_mesh(msh3d, remesh_options)
+
+for ite in range(2,5):    
+  print  "   Anisotropic adaptation : iteration %d " %(ite)    
+  msh3d_aniso['sensor'] = create_sensor(msh3d_aniso)
+  msh3d_aniso           = pyamg.adapt_mesh(msh3d_aniso, remesh_options)
+
+# Output final mesh   
+pyamg.write_mesh(msh3d_aniso,"cube_aniso.meshb")        
+								</code></pre>
+							</p>
+						</div>
+
 							<ul class="actions stacked">
-								<li><a href="#" class="button">Back to top</a></li>
+								<li><a href="#" class="button big wide smooth-scroll-middle">Back to top</a></li>
 							</ul>
-						</div>
-						<div class="image">
-							<img src="images/spotlight02.jpg" alt="" />
-						</div>
+						
 					</section>
 
-				<!-- Four -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Pharetra etiam nulla</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+
+					<!-- -->
+
+					<section class="wrapper style1 align-left" id="3dsizing">
+						<div class="inner">
+							<h2>Mesh adaptation according to a sizing field</h2>
+							
+							
+
+							
+							<p>
+								Here, an isotropic refinement using a sizing field is shown. This is done using the key <code class="language-python">"Metric"</code> in the <code class="language-python">mesh</code> data structure. We illustrate this through the refinement around the corner (0,0,0) of the unit cube.<p>
+									
+									
+							<h4>Files</h4>				
+								<ul>
+									<li><a href="#">cube.meshb</a></li>
+									<li><a href="#">pyamg_sizing.py</a></li>
+								</ul>
+									
+							<p> We start by defining the sizing function.</p>
+							
+														<div style="width : 800px;">
+														<p>
+															<pre><code class="language-python">import pyamg, math, numpy as np
+
+def analytical_sizing(x,y,z=1):
+    d    = math.sqrt(x*x + y*y + z*z)
+    hmin = 0.01
+    hmed = 0.1
+    hmax = 0.5
+    if  ( d <= 10*hmin         ): return hmin
+    elif( d <= 10*hmin+ 5*hmed ): return hmed
+    else:                         return hmax 
+
+def create_sizing(mesh):
+    size = []
+    crd    = []
+    if   ( 'xyz' in mesh ): 
+        crd = mesh['xyz']
+        for x in crd:
+            size.append(analytical_sizing(x[0],x[1],x[2]))
+    elif ( 'xy' in mesh ):
+            size.append(0.2)
+    return size
+		
+# Load mesh
+msh3d = pyamg.read_mesh("cube.meshb")
+</code></pre>
+														</p>
+													</div>	
+													
+													<p>
+														Five adaptive steps are then performed to generate the final mesh. The error is controlled in L2 norm.
+													</p>
+													
+													<div style="width : 800px;">
+													<p>
+														<pre><code class="language-python"># Define remeshing options
+remesh_options              = {}
+remesh_options['gradation'] = 1.5
+remesh_options['logfile'] = "remesh-adap-metric.log"
+
+msh3d.pop('sensor',None)
+msh3d['metric']  = create_sizing(msh3d)
+print  "   Adaptation : iteration 1"
+msh3d_iso        = pyamg.adapt_mesh(msh3d, remesh_options)
+
+for ite in range(2,5):
+  print  "   Adaptation : iteration %d " %(ite)    
+  msh3d_iso['metric'] = create_sizing(msh3d_iso)
+  msh3d_iso           = pyamg.adapt_mesh(msh3d_iso, remesh_options)
+
+print "\n output : cube_iso.meshb \n"  
+pyamg.write_mesh(msh3d_iso,"cube_iso.meshb")
+</code></pre>
+														</p>
+													</div>		
+													
+									
+							<figure>
+							  <img src="./images/testcases/cube_sizing.jpg" alt="Refined cube using a sizing function" style="width=100%">
+							  <figcaption>
+									<p>Refined cube using a sizing function.</p></figcaption>
+							</figure>
+													
+							
 							<ul class="actions stacked">
-								<li><a href="#" class="button">Learn More</a></li>
+								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
 							</ul>
-						</div>
-						<div class="image">
-							<img src="images/spotlight03.jpg" alt="" />
-						</div>
+						
 					</section>
 
+					<!-- -->
 
+					<section class="wrapper style1 align-left" id="uniform_refinement">
+						<div class="inner">
+							<h2>Control of the interpolation error of an analytical function, and a python function that applies it at each point of a mesh.</h2>
+							
+							<ul class="actions stacked">
+								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
+							</ul>
+						
+					</section>
+					
+					<!-- -->
+
+					<section class="wrapper style1 align-left" id="su2amg">
+						<div class="inner">
+							<h2>SU2/pyAMG interface installation</h2>
+							
+							<p>
+								This custom version of SU2 can be downloaded from github using the following commands:
+								
+								<pre><code class="language-python">$ git clone https://github.com/vmenier/SU2.git
+$ cd SU2
+$ git checkout feature_mesh_adaptation</code></pre>
+							</p>
+							
+							
+							
+							<ul class="actions stacked">
+								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
+							</ul>
+						
+					</section>
+
+					<!-- -->
 
 				<!-- Footer -->
 					<footer class="wrapper style1 align-center">

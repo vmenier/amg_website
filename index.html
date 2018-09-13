@@ -9,9 +9,14 @@
 		<title>pyAMG by Inria - Mesh Adaptation</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link href="prism/prism.css" rel="stylesheet" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		
+		
+		
 	</head>
 	<body class="is-preload">
 		
@@ -22,7 +27,7 @@
 			<div id="wrapper" class="divided">
 
 				<!-- One -->
-					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+					<section class="banner style1 orient-left content-align-left image-position-center fullscreen onload-image-fade-in onload-content-fade-right">
 						<div class="content">
 							<h1>pyAMG</h1>
 							<p class="major">A fast, robust mesh adaptation software for 2D and 3D complex geometries, all wrapped in Python. pyAMG is developed at  <a href="https://www.inria.fr">Inria</a> and released for free for non-commercial use.</p>
@@ -31,7 +36,7 @@
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/banner-01.jpg" alt="" />
+							<img src="images/spotligh-main.png" alt="" />
 						</div>
 					</section>
 
@@ -39,12 +44,29 @@
 					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
 						<div class="content">
 							<h2>What is pyAMG?</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+							<p>pyAMG is a mesh adaptation software library developed by the Gamma3 team at Inria. Its main capabilities include:</p>
+							<ul>
+								<li>Volume and surface remeshing through local modifications</li>
+								<li>Metric computation from a solution field using a multiscale metric</li>
+								<li>Metric field correction using anisotropic gradation</li>
+								<li>Solution field interpolation from one mesh onto another</li>
+							</ul>
 							
-							<h3>People</h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+							<h3>Interface with SU2</h3>
 							
-							<h3>References</h3>
+							<p>
+								pyAMG is interfaced with SU2, an open-source collection of software for multi-physics simulation and design on unstructured meshes (i.e., CFD and beyond) developed in the Aerospace Design Lab (ADL) at Stanford University.<br/>
+							</p>
+							
+							<p>
+								The pyAMG/SU2 interface is presented in the <a href="#examples" class="smooth-scroll-middle">examples</a> below.
+							</p>
+							
+							<p>
+							<a href="https://doi.org/10.2514/1.J053813">SU2: An Open-Source Suite for Multiphysics Simulation and Design</a>, T.D. Economon et al. (2016). <cite> AIAA Journal </cite>, Vol. 54, No. 3 (2016), pp. 828-846.</p>
+
+							
+							<h3>pyAMG References</h3>
 							
 							<ol>
 							<li><a href="https://doi.org/10.1016/bs.hna.2016.10.004">Mesh generation and adaptation</a>, A. Loseille (2017). <cite> Handbook on Numerical Methods for Hyperbolic Problems: Applied and Modern Issues </cite>, Chapter 12, Elsevier, 2017.</li>
@@ -52,15 +74,22 @@
 							<li><a href="https://doi.org/10.1016/j.cad.2015.09.005">A decade of progress on anisotropic mesh adaptation for computational fluid dynamics</a>, F. Alauzet and A. Loseille (2016). <cite> Computer-Aided Design </cite>, Vol 72, pp. 13-39, 2016.</li>
 							</ol>
 							
+							<h3>Contact</h3>
+							
+							<ul>
+								<li>Adrien Loseille, Inria, adrien.loseille@inria.fr</li>
+								<li>Victorien Menier</li>
+							</ul>
+							
 							<ul class="actions fit">
-								<li><a href="#download" class="button">Download pyAMG</a></li>
-								<li><a href="#installation" class="button">Installation</a></li>
-								<li><a href="#quickstart" class="button">Quick start</a></li>
-								<li><a href="#examples" class="button">Examples</a></li>
+								<li><a href="#download" class="button smooth-scroll-middle">Download pyAMG</a></li>
+								<li><a href="#installation" class="button smooth-scroll-middle">Installation</a></li>
+								<li><a href="#quickstart" class="button smooth-scroll-middle">Quick start</a></li>
+								<li><a href="#examples" class="button smooth-scroll-middle">Examples</a></li>
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/spotlight01.jpg" alt="" />
+							<img src="images/spotlight-about.png" alt="" />
 						</div>
 					</section>
 
@@ -69,7 +98,317 @@
 					<section class="wrapper style1 align-center" id="download">
 						<div class="inner">
 							<h2>Downloading pyAMG</h2>
-							<p>pyAMG is the property of Inria and is free for evaluation purposes and non-commercial uses. It cannot be included in any third package without prior agreement. Python distributions are available for Linux and MacOS. See <a href="#installation">installation</a> for instructions regarding the setup.<p>
+							<p>pyAMG is the property of Inria and is free for evaluation purposes and non-commercial uses. It cannot be included in any third package without prior agreement. Python distributions are available for Linux and MacOS. See <a href="#installation" class="smooth-scroll-middle">installation</a> for instructions regarding the setup.<p>
+							
+
+								<div class="wrap-contact100">
+									<form class="contact100-form validate-form">
+
+										<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email">
+											<span class="label-input100">First Name *</span>
+											<input class="input100" type="text" name="email" placeholder="Enter Your First Name ">
+										</div>
+
+										<div class="wrap-input100 bg1 rs1-wrap-input100">
+											<span class="label-input100">Last Name *</span>
+											<input class="input100" type="text" name="phone" placeholder="Enter Your Last Name">
+										</div>
+
+										<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email (e@a.x)">
+											<span class="label-input100">Email *</span>
+											<input class="input100" type="text" name="email" placeholder="Enter Your Email ">
+										</div>
+
+										<div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+											<span class="label-input100">Country *</span>
+											<div>
+												<select class="js-select2" name="country" title="" required id="id_country">
+													<option>Please choose</option>
+													<option value="AF">Afghanistan</option>
+													<option value="AX">Åland Islands</option>
+													<option value="AL">Albania</option>
+													<option value="DZ">Algeria</option>
+													<option value="AS">American Samoa</option>
+													<option value="AD">Andorra</option>
+													<option value="AO">Angola</option>
+													<option value="AI">Anguilla</option>
+													<option value="AQ">Antarctica</option>
+													<option value="AG">Antigua and Barbuda</option>
+													<option value="AR">Argentina</option>
+													<option value="AM">Armenia</option>
+													<option value="AW">Aruba</option>
+													<option value="AU">Australia</option>
+													<option value="AT">Austria</option>
+													<option value="AZ">Azerbaijan</option>
+													<option value="BS">Bahamas</option>
+													<option value="BH">Bahrain</option>
+													<option value="BD">Bangladesh</option>
+													<option value="BB">Barbados</option>
+													<option value="BY">Belarus</option>
+													<option value="BE">Belgium</option>
+													<option value="BZ">Belize</option>
+													<option value="BJ">Benin</option>
+													<option value="BM">Bermuda</option>
+													<option value="BT">Bhutan</option>
+													<option value="BO">Bolivia</option>
+													<option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+													<option value="BA">Bosnia and Herzegovina</option>
+													<option value="BW">Botswana</option>
+													<option value="BV">Bouvet Island</option>
+													<option value="BR">Brazil</option>
+													<option value="IO">British Indian Ocean Territory</option>
+													<option value="BN">Brunei</option>
+													<option value="BG">Bulgaria</option>
+													<option value="BF">Burkina Faso</option>
+													<option value="BI">Burundi</option>
+													<option value="CV">Cabo Verde</option>
+													<option value="KH">Cambodia</option>
+													<option value="CM">Cameroon</option>
+													<option value="CA">Canada</option>
+													<option value="KY">Cayman Islands</option>
+													<option value="CF">Central African Republic</option>
+													<option value="TD">Chad</option>
+													<option value="CL">Chile</option>
+													<option value="CN">China</option>
+													<option value="CX">Christmas Island</option>
+													<option value="CC">Cocos (Keeling) Islands</option>
+													<option value="CO">Colombia</option>
+													<option value="KM">Comoros</option>
+													<option value="CG">Congo</option>
+													<option value="CD">Congo (the Democratic Republic of the)</option>
+													<option value="CK">Cook Islands</option>
+													<option value="CR">Costa Rica</option>
+													<option value="CI">Côte d&#39;Ivoire</option>
+													<option value="HR">Croatia</option>
+													<option value="CU">Cuba</option>
+													<option value="CW">Curaçao</option>
+													<option value="CY">Cyprus</option>
+													<option value="CZ">Czechia</option>
+													<option value="DK">Denmark</option>
+													<option value="DJ">Djibouti</option>
+													<option value="DM">Dominica</option>
+													<option value="DO">Dominican Republic</option>
+													<option value="EC">Ecuador</option>
+													<option value="EG">Egypt</option>
+													<option value="SV">El Salvador</option>
+													<option value="GQ">Equatorial Guinea</option>
+													<option value="ER">Eritrea</option>
+													<option value="EE">Estonia</option>
+													<option value="ET">Ethiopia</option>
+													<option value="FK">Falkland Islands  [Malvinas]</option>
+													<option value="FO">Faroe Islands</option>
+													<option value="FJ">Fiji</option>
+													<option value="FI">Finland</option>
+													<option value="FR">France</option>
+													<option value="GF">French Guiana</option>
+													<option value="PF">French Polynesia</option>
+													<option value="TF">French Southern Territories</option>
+													<option value="GA">Gabon</option>
+													<option value="GM">Gambia</option>
+													<option value="GE">Georgia</option>
+													<option value="DE">Germany</option>
+													<option value="GH">Ghana</option>
+													<option value="GI">Gibraltar</option>
+													<option value="GR">Greece</option>
+													<option value="GL">Greenland</option>
+													<option value="GD">Grenada</option>
+													<option value="GP">Guadeloupe</option>
+													<option value="GU">Guam</option>
+													<option value="GT">Guatemala</option>
+													<option value="GG">Guernsey</option>
+													<option value="GN">Guinea</option>
+													<option value="GW">Guinea-Bissau</option>
+													<option value="GY">Guyana</option>
+													<option value="HT">Haiti</option>
+													<option value="HM">Heard Island and McDonald Islands</option>
+													<option value="VA">Holy See</option>
+													<option value="HN">Honduras</option>
+													<option value="HK">Hong Kong</option>
+													<option value="HU">Hungary</option>
+													<option value="IS">Iceland</option>
+													<option value="IN">India</option>
+													<option value="ID">Indonesia</option>
+													<option value="IR">Iran</option>
+													<option value="IQ">Iraq</option>
+													<option value="IE">Ireland</option>
+													<option value="IM">Isle of Man</option>
+													<option value="IL">Israel</option>
+													<option value="IT">Italy</option>
+													<option value="JM">Jamaica</option>
+													<option value="JP">Japan</option>
+													<option value="JE">Jersey</option>
+													<option value="JO">Jordan</option>
+													<option value="KZ">Kazakhstan</option>
+													<option value="KE">Kenya</option>
+													<option value="KI">Kiribati</option>
+													<option value="KW">Kuwait</option>
+													<option value="KG">Kyrgyzstan</option>
+													<option value="LA">Laos</option>
+													<option value="LV">Latvia</option>
+													<option value="LB">Lebanon</option>
+													<option value="LS">Lesotho</option>
+													<option value="LR">Liberia</option>
+													<option value="LY">Libya</option>
+													<option value="LI">Liechtenstein</option>
+													<option value="LT">Lithuania</option>
+													<option value="LU">Luxembourg</option>
+													<option value="MO">Macao</option>
+													<option value="MK">Macedonia</option>
+													<option value="MG">Madagascar</option>
+													<option value="MW">Malawi</option>
+													<option value="MY">Malaysia</option>
+													<option value="MV">Maldives</option>
+													<option value="ML">Mali</option>
+													<option value="MT">Malta</option>
+													<option value="MH">Marshall Islands</option>
+													<option value="MQ">Martinique</option>
+													<option value="MR">Mauritania</option>
+													<option value="MU">Mauritius</option>
+													<option value="YT">Mayotte</option>
+													<option value="MX">Mexico</option>
+													<option value="FM">Micronesia (Federated States of)</option>
+													<option value="MD">Moldova</option>
+													<option value="MC">Monaco</option>
+													<option value="MN">Mongolia</option>
+													<option value="ME">Montenegro</option>
+													<option value="MS">Montserrat</option>
+													<option value="MA">Morocco</option>
+													<option value="MZ">Mozambique</option>
+													<option value="MM">Myanmar</option>
+													<option value="NA">Namibia</option>
+													<option value="NR">Nauru</option>
+													<option value="NP">Nepal</option>
+													<option value="NL">Netherlands</option>
+													<option value="NC">New Caledonia</option>
+													<option value="NZ">New Zealand</option>
+													<option value="NI">Nicaragua</option>
+													<option value="NE">Niger</option>
+													<option value="NG">Nigeria</option>
+													<option value="NU">Niue</option>
+													<option value="NF">Norfolk Island</option>
+													<option value="KP">North Korea</option>
+													<option value="MP">Northern Mariana Islands</option>
+													<option value="NO">Norway</option>
+													<option value="OM">Oman</option>
+													<option value="PK">Pakistan</option>
+													<option value="PW">Palau</option>
+													<option value="PS">Palestine, State of</option>
+													<option value="PA">Panama</option>
+													<option value="PG">Papua New Guinea</option>
+													<option value="PY">Paraguay</option>
+													<option value="PE">Peru</option>
+													<option value="PH">Philippines</option>
+													<option value="PN">Pitcairn</option>
+													<option value="PL">Poland</option>
+													<option value="PT">Portugal</option>
+													<option value="PR">Puerto Rico</option>
+													<option value="QA">Qatar</option>
+													<option value="RE">Réunion</option>
+													<option value="RO">Romania</option>
+													<option value="RU">Russia</option>
+													<option value="RW">Rwanda</option>
+													<option value="BL">Saint Barthélemy</option>
+													<option value="SH">Saint Helena, Ascension and Tristan da Cunha</option>
+													<option value="KN">Saint Kitts and Nevis</option>
+													<option value="LC">Saint Lucia</option>
+													<option value="MF">Saint Martin (French part)</option>
+													<option value="PM">Saint Pierre and Miquelon</option>
+													<option value="VC">Saint Vincent and the Grenadines</option>
+													<option value="WS">Samoa</option>
+													<option value="SM">San Marino</option>
+													<option value="ST">Sao Tome and Principe</option>
+													<option value="SA">Saudi Arabia</option>
+													<option value="SN">Senegal</option>
+													<option value="RS">Serbia</option>
+													<option value="SC">Seychelles</option>
+													<option value="SL">Sierra Leone</option>
+													<option value="SG">Singapore</option>
+													<option value="SX">Sint Maarten (Dutch part)</option>
+													<option value="SK">Slovakia</option>
+													<option value="SI">Slovenia</option>
+													<option value="SB">Solomon Islands</option>
+													<option value="SO">Somalia</option>
+													<option value="ZA">South Africa</option>
+													<option value="GS">South Georgia and the South Sandwich Islands</option>
+													<option value="KR">South Korea</option>
+													<option value="SS">South Sudan</option>
+													<option value="ES">Spain</option>
+													<option value="LK">Sri Lanka</option>
+													<option value="SD">Sudan</option>
+													<option value="SR">Suriname</option>
+													<option value="SJ">Svalbard and Jan Mayen</option>
+													<option value="SZ">Swaziland</option>
+													<option value="SE">Sweden</option>
+													<option value="CH">Switzerland</option>
+													<option value="SY">Syria</option>
+													<option value="TW">Taiwan</option>
+													<option value="TJ">Tajikistan</option>
+													<option value="TZ">Tanzania</option>
+													<option value="TH">Thailand</option>
+													<option value="TL">Timor-Leste</option>
+													<option value="TG">Togo</option>
+													<option value="TK">Tokelau</option>
+													<option value="TO">Tonga</option>
+													<option value="TT">Trinidad and Tobago</option>
+													<option value="TN">Tunisia</option>
+													<option value="TR">Turkey</option>
+													<option value="TM">Turkmenistan</option>
+													<option value="TC">Turks and Caicos Islands</option>
+													<option value="TV">Tuvalu</option>
+													<option value="UG">Uganda</option>
+													<option value="UA">Ukraine</option>
+													<option value="AE">United Arab Emirates</option>
+													<option value="GB">United Kingdom</option>
+													<option value="UM">United States Minor Outlying Islands</option>
+													<option value="US">United States of America</option>
+													<option value="UY">Uruguay</option>
+													<option value="UZ">Uzbekistan</option>
+													<option value="VU">Vanuatu</option>
+													<option value="VE">Venezuela</option>
+													<option value="VN">Vietnam</option>
+													<option value="VG">Virgin Islands (British)</option>
+													<option value="VI">Virgin Islands (U.S.)</option>
+													<option value="WF">Wallis and Futuna</option>
+													<option value="EH">Western Sahara</option>
+													<option value="YE">Yemen</option>
+													<option value="ZM">Zambia</option>
+													<option value="ZW">Zimbabwe</option>
+												</select>
+												<div class="dropDownSelect2"></div>
+											</div>
+										</div>
+
+										<div class="wrap-input100 bg1 rs1-wrap-input100">
+											<span class="label-input100">Organization</span>
+											<input class="input100" type="text" name="phone" placeholder="Enter your organization's name">
+										</div>
+				
+										<div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+											<span class="label-input100">Org. Category *</span>
+											<div>
+												<select class="js-select2" name="organization_category" title="" required id="id_organization_category">
+													<option>Please choose</option>
+												  <option value="AC">Academic</option>
+												  <option value="IND">Industrial</option>
+												</select>
+												<div class="dropDownSelect2"></div>
+											</div>
+										</div>
+			
+										<div class="container-contact100-form-btn">
+											<button class="contact100-form-btn">
+												<span>
+													Submit
+													<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+												</span>
+											</button>
+										</div>
+									</form>
+								</div>
+
+
+							
+
 
 							<div class="items style1 medium onscroll-fade-in">
 								<section>
@@ -93,7 +432,7 @@
 					</section>
 
 				<!-- Four -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="installation">
+					<section class="spotlight style1 orient-right content-align-left image-position-left onscroll-image-fade-in" id="installation">
 						<div class="content">
 							<h2>Installation</h2>
 							<p>After <a href="#download">downloading the python wheel</a> corresponding to your architecture, open a terminal and follow these steps to install pyAMG using <a href="https://pip.pypa.io/en/stable/reference/pip_install/">pip, the python installer</a>. Note that Python 2.7 (or newer) is required. <pre><code class="language-bash">tar -zxvf pyamg-inria.macos64bits.tgz
@@ -103,19 +442,16 @@ pip install pyamg-inria.macos64bits.whl</code></pre>
 EXPORT PYTHONPATH=/path/to/install/lib/python2.7/site-packages:$PYTHONPATH</code></pre>
 							</p>
 							
-							<ul class="actions stacked">
-								<li><a href="#quickstart" class="button">Quick start</a></li>
-							</ul>
 						</div>
 						<div class="image">
-							<img src="images/spotlight_installation-01.jpg" alt="" />
+							<img src="images/spotlight-install.png" alt="" />
 						</div>
 					</section>
 					
 					
 
 					<!-- Three -->
-						<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" id="quickstart">
+						<section class="spotlight style1 orient-left content-align-left image-position-left onscroll-image-fade-in" id="quickstart">
 							<div class="content">
 								<h2>Quick start</h2>
 								
@@ -123,10 +459,18 @@ EXPORT PYTHONPATH=/path/to/install/lib/python2.7/site-packages:$PYTHONPATH</code
 								<p>In pyAMG, a mesh is stored as a dictionary. Each key points to an array representating the cordinates, geometry, connectivity, ... The keys are 'xy' for the coordinates of a 2D mesh and 'xyz' for a 3D mesh. The connectivity is provided by 'triangles', 'tetrahedra', 'edges'. </p>
 								
 
-								<h4>A very simple example</h4>
+								<h4>A very simple 2D example</h4>
 								
 								<p>
-									<pre><code class="language-bash">import pyamg
+									This is the simplest example there is. We start by defining the mesh of a unit square that contains only two triangles, by filling <code class="language-python">mesh['Triangles']</code>. Then, the pyamg mesh adaptation function is called with a maximal edge size set to 0.5, generating a final mesh containing 6 triangles. 
+								</p>
+								
+								<p>
+									The output mesh in the Gamma mesh format (*.mesh[b]). Information about this format is available on the <a href="https://github.com/LoicMarechal/libMeshbgithub"> repository of the libmesh7 library</a>, a light open-source I/O library.  
+								</p>
+								
+								<p>
+									<pre><code class="language-python">import pyamg
 mesh = {}
 mesh['xy']        = [ [0,0], [1,0], [1,1], [0,1] ]
 mesh['Triangles'] = [ [1,2,3,0],[3,4,1,0]]
@@ -138,12 +482,17 @@ adapted_mesh = pyamg.adapt_mesh(mesh,remesh_options)
 pyamg.write_mesh(adapted_mesh, "refined_mesh.mesh")</code></pre>
 								
 								</p>
+								
+								<p>
+									A series of examples of increasing complexity is available below.
+								</p>
+								
 								<ul class="actions stacked">
-									<li><a href="#examples" class="button">Go to examples</a></li>
+									<li><a href="#examples" class="button smooth-scroll-middle">Go to examples</a></li>
 								</ul>
 							</div>
 							<div class="image">
-								<img src="images/spotlight02.jpg" alt="" />
+								<img src="images/spotlight-quickstart.png" alt="" />
 							</div>
 						</section>
 
