@@ -36,7 +36,7 @@
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/spotligh-main.png" alt="" />
+							<img src="images/banner.jpg" alt="" />
 						</div>
 					</section>
 
@@ -77,8 +77,8 @@
 							<h3>Contact</h3>
 							
 							<ul>
-								<li>Adrien Loseille, Inria, adrien.loseille@inria.fr</li>
-								<li>Victorien Menier</li>
+								<li><a href="http://pages.saclay.inria.fr/adrien.loseille/" title="Homepage of Adrien Loseille">Adrien Loseille</a>, Inria</li>
+								<li><a href="https://www.linkedin.com/in/victorienmenier/" title="Linkedin page of Victorien Menier">Victorien Menier</a>, Stanford University & Inria</li>
 							</ul>
 							
 							<ul class="actions fit">
@@ -89,7 +89,7 @@
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/spotlight-about.png" alt="" />
+							<img src="images/shuttle.jpg" alt="" />
 						</div>
 					</section>
 
@@ -100,8 +100,8 @@
 							<h2>Downloading pyAMG</h2>
 							<p>pyAMG is the property of Inria and is free for evaluation purposes and non-commercial uses. It cannot be included in any third package without prior agreement. Python distributions are available for Linux and MacOS. See <a href="#installation" class="smooth-scroll-middle">installation</a> for instructions regarding the setup.<p>
 							
-
-								<div class="wrap-contact100">
+								<!--
+								<div class="wrap-contact100" style="width:800px; margin:auto;">
 									<form class="contact100-form validate-form">
 
 										<div class="wrap-input100 validate-input bg1 rs1-wrap-input100" data-validate = "Enter Your Email">
@@ -406,7 +406,7 @@
 									</form>
 								</div>
 
-
+								-->
 							
 
 
@@ -414,20 +414,28 @@
 								<section>
 									<span class="icon style2 major fa-linux"></span>
 									<h3>Linux</h3>
-									<p><a href="#download">pyamg-inria.linux64bits.whl.tgz</a></p>
+									<p><a href="https://pyamg.saclay.inria.fr/download/LinuxPyAmg.tar.gz" title="Download pyAMG for Linux">LinuxPyAmg.tar.gz</a></p>
 								</section>
 								<section>
 									<span class="icon style2 major fa-apple"></span>
 									<h3>MacOS</h3>
-									<p><a href="#download">pyamg-inria.macos64bits.whl.tgz</a></p>
+									<p><a href="https://pyamg.saclay.inria.fr/download/MacPyAmg.tar.gz" title="Download pyAMG for Mac">MacPyAmg.tar.gz</a></p>
 								</section>
-								
+								<!--
 								<section>
 									<span class="icon style2 major fa-book"></span>
 									<h3>User's manual</h3>
 									<p><a href="#download">Download manual</a></p>
 								</section>
+									-->
+								
 							</div>
+							
+								
+							<ul class="actions fit">
+								<li><a href="#installation" class="button smooth-scroll-middle">pyAMG Installation</a></li>
+							</ul>
+							
 						</div>
 					</section>
 
@@ -442,13 +450,89 @@ pip install pyamg-inria.macos64bits.whl</code></pre>
 EXPORT PYTHONPATH=/path/to/install/lib/python2.7/site-packages:$PYTHONPATH</code></pre>
 							</p>
 							
+							<p>
+								Now that pyAMG is setup, you can check how to use it together with SU2, or jump straight to the quick start.
+							</p>
+						
+							<ul class="actions fit">
+								<li><a href="#installation_su2" class="button smooth-scroll-middle">pyAMG/SU2 Installation</a></li>
+								<li><a href="#quickstart" class="button smooth-scroll-middle">Quick start</a></li>
+							</ul>
+							
+							
 						</div>
 						<div class="image">
 							<img src="images/spotlight-install.png" alt="" />
 						</div>
+						
+
+						
 					</section>
 					
+
+					<!-- Installation SU2/AMG -->
 					
+					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in" id="installation_su2">
+						<div class="content">
+							<h2>SU2/pyAMG interface installation</h2>
+							<p>pyAMG is interfaced with <a href="https://su2code.github.io" title="SU2 website">the open-source Computational Fluid Dynamics (CFD) solver SU2</a>. The installation steps are the following: </p>
+				
+							<ol>
+								<li><a href="#su2_install">Install a custom version of SU2</a></li>
+								<li><a href="#su2_amginterface">Install amginterface</a></li>
+								<li><a href="#su2_example">Run an example</a></li>
+							</ol>
+							
+							<h3 id="su2_install">Install a custom version of SU2</h3>
+							
+							<p>
+								This custom version of SU2 includes the python script  <code>mesh_adaptation_amg.py</code> that drives the mesh adaptation process by calling SU2 and pyAMG according to parameters provided by the user in the SU2 configuration file (e.g. number of iterative loops, mesh sizes etc.).</p>
+								
+								<p>
+								To install SU2, start by cloning the following github repository. 
+							<pre><code class="language-bash">git clone https://github.com/vmenier/SU2.git
+cd SU2
+git checkout develop</code></pre>
+							
+							Then, <a href="https://su2code.github.io/docs/Build-from-Source/">build SU2 from source</a> and do not forget to <a href="https://su2code.github.io/docs/Build-from-Source/#environment-variables">set your environment variables</a>.
+							</p>
+							
+							
+							
+						<h3 id="su2_amginterface">Install amginterface</h3>
+						
+						<p>
+							amginterface is a simple python module that deals with I/Os in the adaptive process. To install it, follow these steps:						
+						<pre><code class="language-bash">git clone https://github.com/vmenier/amginterface.git
+cd amginterface
+python setup.py build_ext —inplace
+export PYTHONPATH=/path/to/amginterface:$PYTHONPATH</code></pre>
+						
+						</p>
+						
+						<h3 id="su2_example">Run an example</h3>
+						
+						<p>
+							Running an adaptive case using pyAMG and SU2 is done only by adding a few lines to the SU2 configuration file and calling the <code>mesh_adaptation_amg.py</code> python script. Examples are provided in the <a href="examples.html">examples</a> page.
+						</p>
+						
+						
+							
+						<ul class="actions fit">
+							<li><a href="#quickstart" class="button smooth-scroll-middle">pyAMG Quick Start</a></li>
+						</ul>
+						
+						
+						
+						</div>
+						
+						
+						
+						<div class="image">
+							<img src="images/spotlight-su2.png" alt="" />
+						</div>
+					</section>
+									
 
 					<!-- Three -->
 						<section class="spotlight style1 orient-left content-align-left image-position-left onscroll-image-fade-in" id="quickstart">
@@ -496,6 +580,8 @@ pyamg.write_mesh(adapted_mesh, "refined_mesh.mesh")</code></pre>
 							</div>
 						</section>
 
+
+
 				<!-- Five -->
 					<section class="wrapper style1 align-center" id="examples">
 						<div class="inner">
@@ -506,7 +592,8 @@ pyamg.write_mesh(adapted_mesh, "refined_mesh.mesh")</code></pre>
 							</ul>
 						</div>
 						
-						<!-- Gallery -->
+						
+						<!--
 							<div class="gallery style2 medium lightbox onscroll-fade-in">
 								<article>
 									<a href="images/gallery/fulls/01_naca-01.jpg" class="image">
@@ -653,7 +740,8 @@ pyamg.write_mesh(adapted_mesh, "refined_mesh.mesh")</code></pre>
 									</div>
 								</article>
 							</div>
-
+						-->
+							
 					</section>
 
 				<!-- Footer -->

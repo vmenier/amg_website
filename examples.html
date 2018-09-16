@@ -23,7 +23,7 @@
 
 
 				<!-- Two -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
+					<section class="spotlight style1 orient-right content-align-left image-position-left onscroll-image-fade-in" id="first">
 						<div class="content">
 							<h1>pyAMG Examples</h1>
 							<p>This page presents some examples of mesh adaptation using pyAMG.</p>
@@ -39,11 +39,13 @@
 							
 							<h3>Examples using SU2</h3>
 							
+							<p>
+								These examples require to have the  
+							</p>
+							
 							<ul>
-								<li><a href="#su2amg">SU2/pyAMG installation</a></li>
 								<li><a href="#2dnaca">Adaptation of a 2D NACA airfoil</a></li>
 								<li><a href="#m6wing">Adaptive ONERA M6 wing</a></li>
-								<li><a href="#crm">Adaptive transonic CRM</a></li>
 							</ul>
 							
 							<ul class="actions fit">
@@ -51,7 +53,7 @@
 							</ul>
 						</div>
 						<div class="image">
-							<img src="images/spotlight02.png" alt="" />
+							<img src="images/shuttle.jpg" alt="" />
 						</div>
 					</section>
 
@@ -292,33 +294,72 @@ pyamg.write_mesh(msh3d_iso,"cube_iso.meshb")
 						
 					</section>
 
-					<!-- -->
-
-					<section class="wrapper style1 align-left" id="uniform_refinement">
-						<div class="inner">
-							<h2>Control of the interpolation error of an analytical function, and a python function that applies it at each point of a mesh.</h2>
-							
-							<ul class="actions stacked">
-								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
-							</ul>
-						
-					</section>
 					
 					<!-- -->
 
-					<section class="wrapper style1 align-left" id="su2amg">
+					<section class="wrapper style1 align-left" id="2dnaca">
 						<div class="inner">
-							<h2>SU2/pyAMG interface installation</h2>
+							<h2>Adaptive 3D ONERA M6 wing</h2>
 							
 							<p>
-								This custom version of SU2 can be downloaded from github using the following commands:
-								
-								<pre><code class="language-python">$ git clone https://github.com/vmenier/SU2.git
-$ cd SU2
-$ git checkout feature_mesh_adaptation</code></pre>
+								Note: This example requires to have the <a href="index.html#installation_su2">pyAMG/SU2 interface</a> installed.
+							</p>
+							
+							<h3>Problem setup</h3>
+							
+							<p>
+							This example uses the geometry and the flow conditions of the Inviscid ONERA M6 SU2 test case.
+							</p>
+							<ul>
+							<li>Freestream Pressure = 101325.0 N/m2</li>
+							<li>Freestream Temperature = 288.15 K</li>
+							<li>Freestream Mach number = 0.8395</li>
+							<li>Angle of attack (AoA) = 3.06 deg</li>
+							</ul>
+							<p>
+							The goal of this mesh adaptation is to accurately capture the typical "lambda" shock along the upper surface of the lifting wing, by creating anisotropic mesh elements along the shock's directions of anisotropy. The Mach number is used as the sensor for mesh adaptation.
 							</p>
 							
 							
+							<h3>SU2 configuration file options</h3>
+							
+							<p>
+								
+							</p>
+							
+																				<div style="width : 800px;">
+																				<p>
+																					<pre><code>% ------------- MESH ADAPTATION PARAMETER ------------%
+
+% Mesh size parameters
+ADAP_SIZES= (2000, 4000, 8000)
+
+% Number of iterative loops performed for each prescribed size
+ADAP_SUBITE= (2, 2, 2)
+
+% Number of CFD iterations for each mesh size
+ADAP_EXT_ITER= (1000, 1000, 1000)
+
+% Prescribed residual reduction for each mesh size
+ADAP_RESIDUAL_REDUCTION= (3, 3, 3)
+
+% Sensor used for mesh adaptation (MACH, PRES, or MACH_PRES)
+ADAP_SENSOR=  MACH
+
+% Max and min edge sizes
+ADAP_HMAX=  200
+ADAP_HMIN=  1e-8
+
+% Prescribed mesh gradation
+ADAP_HGRAD= 1.3
+
+% Output adapted mesh
+MESH_OUT_FILENAME= M6_adap.su2
+
+% Final adapted restart solution
+RESTART_FLOW_FILENAME= M6_adap.dat</code></pre>
+																					</p>
+																				</div>
 							
 							<ul class="actions stacked">
 								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
