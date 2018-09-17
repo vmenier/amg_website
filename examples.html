@@ -40,7 +40,7 @@
 							<h3>Examples using SU2</h3>
 							
 							<p>
-								These examples require to have the  
+								These examples require to have the <a href="index.html#installation_su2">pyAMG/SU2 interface installed</a>. 
 							</p>
 							
 							<ul>
@@ -66,6 +66,10 @@
 								This simple 3D example consists in reading an initial mesh of a cube, adapting it using a smaller specified edge size, and writing the final adapted mesh.	
 							</p>
 							
+							<p>
+								Download: <a href="./download/simple_testcases/cube.meshb" title="Initial mesh of a cube">cube.meshb</a> (the initial mesh)
+							</p>
+							
 							
 							<!-- 
 							<figure>
@@ -74,7 +78,7 @@
 							</figure>
 							-->
 								
-							<div style="width : 800px;">
+							<div style="width : 600px;">
 							<p>
 								<pre><code class="language-python">import pyamg, math, numpy as np
 									
@@ -109,19 +113,12 @@ pyamg.write_mesh(msh3d_unif,"cube_unif.meshb")</code></pre>
 							
 							-->
 						
-						
-						<table>
-							<tr>
-								<td><figure>
-						  <img src="./images/testcases/cube.png" alt="Initial mesh">
-						  <figcaption><p>Initial mesh.</p></figcaption>
-						</figure></td>
-								<td><figure>
-						  <img src="./images/testcases/cube_unif.png" alt="Final mesh">
-						  <figcaption><p>Final mesh.</p></figcaption>
-						</figure></td>
-							</tr>
-						</table>
+						<figure>
+						  <img src="./images/testcases/cube.jpg" alt="Initial mesh of a cube">
+							<img src="./images/testcases/cube_unif.jpg" alt="Refined cube">
+						  <figcaption>
+								<p>Initial mesh and uniformely refined mesh.</p></figcaption>
+						</figure>
 
 						
 						<ul class="actions stacked">
@@ -137,7 +134,11 @@ pyamg.write_mesh(msh3d_unif,"cube_unif.meshb")</code></pre>
 							<h2>Control of the interpolation error of an analytical function</h2>
 							<p>In this example, an initial mesh of a cube is loaded and an anisotropic analytical function is computed at each of its nodes.</p>
 							
-							<div style="width : 800px;">
+							<p>
+								Download: <a href="./download/simple_testcases/cube.meshb" title="Initial mesh of a cube">cube.meshb</a> (the initial mesh)
+							</p>
+							
+							<div style="width : 600px;">
 							<p>
 								<pre><code class="language-python">import pyamg, math, numpy as np
 
@@ -172,7 +173,7 @@ msh3d['sensor'] = create_sensor(msh3d)</code></pre>
 Then, the <code class="language-python">'Lp'</code> remeshing option is set such that the interpolation error of the sensor will be controled in L^2 norm. Five adaptive iterations are performed to capture the anisotropy, and the final mesh is outputted.
 </p>						
 							
-							<div style="width : 800px;">
+							<div style="width : 600px;">
 							<p>
 								<pre><code class="language-python"># Define remeshing options
 remesh_options              = {}
@@ -194,6 +195,14 @@ pyamg.write_mesh(msh3d_aniso,"cube_aniso.meshb")
 								</code></pre>
 							</p>
 						</div>
+						
+						
+						<figure>
+						  <img src="./images/testcases/cube.jpg" alt="Initial mesh of a cube">
+							<img src="./images/testcases/cube_aniso.jpg" alt="Adapted mesh">
+						  <figcaption>
+								<p>Initial mesh and adapted mesh using a control of the interpolation error.</p></figcaption>
+						</figure>
 
 							<ul class="actions stacked">
 								<li><a href="#" class="button big wide smooth-scroll-middle">Back to top</a></li>
@@ -206,24 +215,20 @@ pyamg.write_mesh(msh3d_aniso,"cube_aniso.meshb")
 
 					<section class="wrapper style1 align-left" id="3dsizing">
 						<div class="inner">
-							<h2>Mesh adaptation according to a sizing field</h2>
-							
-							
-
+							<h2>Mesh adaptation according to an isotropic sizing field</h2>
 							
 							<p>
 								Here, an isotropic refinement using a sizing field is shown. This is done using the key <code class="language-python">"Metric"</code> in the <code class="language-python">mesh</code> data structure. We illustrate this through the refinement around the corner (0,0,0) of the unit cube.<p>
 									
 									
-							<h4>Files</h4>				
-								<ul>
-									<li><a href="#">cube.meshb</a></li>
-									<li><a href="#">pyamg_sizing.py</a></li>
-								</ul>
+							<p>
+								Download: <a href="./download/simple_testcases/cube.meshb" title="Initial mesh of a cube">cube.meshb</a> (the initial mesh)
+							</p>
+							
 									
 							<p> We start by defining the sizing function.</p>
 							
-														<div style="width : 800px;">
+														<div style="width : 600px;">
 														<p>
 															<pre><code class="language-python">import pyamg, math, numpy as np
 
@@ -257,7 +262,7 @@ msh3d = pyamg.read_mesh("cube.meshb")
 														Five adaptive steps are then performed to generate the final mesh. The error is controlled in L2 norm.
 													</p>
 													
-													<div style="width : 800px;">
+													<div style="width : 600px;">
 													<p>
 														<pre><code class="language-python"># Define remeshing options
 remesh_options              = {}
@@ -282,9 +287,10 @@ pyamg.write_mesh(msh3d_iso,"cube_iso.meshb")
 													
 									
 							<figure>
-							  <img src="./images/testcases/cube_sizing.jpg" alt="Refined cube using a sizing function" style="width=100%">
+							  <img src="./images/testcases/cube.jpg" alt="Initial mesh of a cube">
+								<img src="./images/testcases/cube_iso.jpg" alt="Refined cube using a sizing function">
 							  <figcaption>
-									<p>Refined cube using a sizing function.</p></figcaption>
+									<p>Initial mesh and refined mesh using an isotropic sizing function.</p></figcaption>
 							</figure>
 													
 							
@@ -293,6 +299,127 @@ pyamg.write_mesh(msh3d_iso,"cube_iso.meshb")
 							</ul>
 						
 					</section>
+
+					<section class="wrapper style1 align-left" id="2dnaca">
+						<div class="inner">
+							<h2>Adaptive 2D NACA 0012</h2>
+							
+							
+
+							<p>
+								Note: This example requires to have the <a href="index.html#installation_su2">pyAMG/SU2 interface</a> installed.
+							</p>
+							
+							<h3>Files</h3>
+							
+							<p>
+							The following files are required: 
+							</p>
+							<ul>
+								<li><a href="./download/su2_testcases/adaptive_NACA0012/adap_NACA0012.cfg" title="NACA0012 SU2 configuration file">adap_NACA0012.cfg</a> : SU2 configuration file</li>
+								<li><a href="./download/su2_testcases/adaptive_NACA0012/mesh_NACA0012_inv.su2" title="Initial NACA0012 mesh">mesh_NACA0012_inv.su2</a> : initial mesh</li>
+								<li><a href="./download/su2_testcases/adaptive_NACA0012/NACA0012_ini.dat" title="Initial restart solution">NACA0012_ini.dat</a> : initial CFD restart solution</li>
+							</ul>
+							
+							<h3>Problem setup</h3>
+							
+							<p>
+							This example uses the geometry and the flow conditions of the Inviscid ONERA M6 SU2 test case.
+							</p>
+							<ul>
+							<li>Freestream Pressure = 101325.0 N/m2</li>
+							<li>Freestream Temperature = 273.15 K</li>
+							<li>Freestream Mach number = 0.8</li>
+							<li>Angle of attack (AoA) = 1.25 deg</li>
+							</ul>
+							<p>
+							The goal of this mesh adaptation is to accurately capture the shocks around the airfoil, by creating anisotropic mesh elements along the shocks' directions of anisotropy. The Mach number is used as the sensor for mesh adaptation.
+							</p>
+							
+							
+							<h3>SU2 configuration file options</h3>
+							
+							<p>
+								
+							</p>
+							
+																				<div style="width : 600px;">
+																				<p>
+																					<pre><code>% ------------- MESH ADAPTATION PARAMETER ------------%
+
+% Mesh size parameters
+ADAP_SIZES= (100, 200, 300)
+
+% Number of iterative loops performed for each mesh size
+ADAP_SUBITE= (2, 2, 2)
+
+% Number of CFD iterations for each mesh size
+ADAP_EXT_ITER= (500, 500, 500)
+
+% Prescribed residual reduction for each mesh size
+ADAP_RESIDUAL_REDUCTION= (3, 3, 3)
+
+% Sensor used for mesh adaptation
+% (MACH, PRES, or MACH_PRES)
+ADAP_SENSOR=  MACH
+
+% Max and min edge sizes
+ADAP_HMAX=  200
+ADAP_HMIN=  1e-8
+
+% Prescribed mesh gradation
+ADAP_HGRAD= 1.3
+
+% Output adapted mesh
+MESH_OUT_FILENAME= mesh_NACA0012_adap.su2
+
+% Final adapted restart solution
+RESTART_FLOW_FILENAME= NACA0012_adap.dat
+
+% Initial restart solution
+SOLUTION_FLOW_FILENAME= NACA0012_ini.dat</code></pre>
+																					</p>
+
+   						</div>
+																				
+							<h3>Running the case</h3>
+							
+							<p>
+								The mesh adaptation process is started by running the following command line in a terminal:
+								<pre style="width:500px;"><code class="language-bash">$ mesh_adaptation_amg.py -f adap_NACA0012.cfg -n 4</code></pre>
+								where the <code class="language-bash">-n</code> option corresponds to the desired number of processing cores.
+							</p>			
+							
+							<p>
+								A <code class="language-bash">./ADAP</code> folder is created, in which the successive calls to SU2_CFD and pyAMG are performed. Once all the adaptive iterations are done, the final adapted mesh and restart solution are outputted in the current directory.
+							</p>
+							
+							<h3>Results</h3>
+							
+							<p>
+								A comparison of the initial and final meshes/solutions is shown in the figures below.
+							</p>
+							
+							<figure>
+							  <img src="./images/testcases/naca0012_mesh_initial.jpg" alt="NACA0012, initial mesh">
+								<img src="./images/testcases/naca0012_solution_initial.jpg" alt="NACA0012, initial solution">
+							  <figcaption>NACA0012: initial surface mesh and solution (5233 vertices).</figcaption>
+							</figure>
+							
+							
+							<figure>
+							  <img src="./images/testcases/naca0012_mesh_adapted.jpg" alt="NACA0012, adapted mesh">
+								<img src="./images/testcases/naca0012_solution_adapted.jpg" alt="NACA0012, adapted solution">
+							  <figcaption>NACA0012: adapted surface mesh and solution (21100 vertices).</figcaption>
+							</figure>
+							
+							
+							<ul class="actions stacked">
+								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
+							</ul>
+						
+					</section>
+
 
 					
 					<!-- -->
@@ -304,6 +431,17 @@ pyamg.write_mesh(msh3d_iso,"cube_iso.meshb")
 							<p>
 								Note: This example requires to have the <a href="index.html#installation_su2">pyAMG/SU2 interface</a> installed.
 							</p>
+							
+							<h3>Files</h3>
+							
+							<p>
+							The following files are required: 
+							</p>
+							<ul>
+								<li><a href="./download/su2_testcases/adaptive_ONERAM6/adap_ONERAM6.cfg" title="">adap_ONERAM6.cfg</a> : SU2 configuration file</li>
+								<li><a href="./download/su2_testcases/adaptive_ONERAM6/mesh_M6.su2" title="Initial M6 mesh">mesh_M6.su2</a> : initial mesh</li>
+								<li><a href="./download/su2_testcases/adaptive_ONERAM6/M6_initial_solution.dat" title="">M6_initial_solution.dat</a> : initial CFD restart solution</li>
+							</ul>
 							
 							<h3>Problem setup</h3>
 							
@@ -327,14 +465,14 @@ pyamg.write_mesh(msh3d_iso,"cube_iso.meshb")
 								
 							</p>
 							
-																				<div style="width : 800px;">
+																				<div style="width : 600px;">
 																				<p>
-																					<pre><code>% ------------- MESH ADAPTATION PARAMETER ------------%
+																					<pre><code>% -- MESH ADAPTATION PARAMETER --%
 
 % Mesh size parameters
 ADAP_SIZES= (2000, 4000, 8000)
 
-% Number of iterative loops performed for each prescribed size
+% Number of iterative loops performed for each mesh size
 ADAP_SUBITE= (2, 2, 2)
 
 % Number of CFD iterations for each mesh size
@@ -343,7 +481,8 @@ ADAP_EXT_ITER= (1000, 1000, 1000)
 % Prescribed residual reduction for each mesh size
 ADAP_RESIDUAL_REDUCTION= (3, 3, 3)
 
-% Sensor used for mesh adaptation (MACH, PRES, or MACH_PRES)
+% Sensor used for mesh adaptation
+% (MACH, PRES, or MACH_PRES)
 ADAP_SENSOR=  MACH
 
 % Max and min edge sizes
@@ -359,7 +498,38 @@ MESH_OUT_FILENAME= M6_adap.su2
 % Final adapted restart solution
 RESTART_FLOW_FILENAME= M6_adap.dat</code></pre>
 																					</p>
-																				</div>
+
+   						</div>
+																				
+							<h3>Running the case</h3>
+							
+							<p>
+								The mesh adaptation process is started by running the following command line in a terminal:
+								<pre style="width:500px;"><code class="language-bash">$ mesh_adaptation_amg.py -f adap_ONERAM6.cfg -n 4</code></pre>
+								where the <code class="language-bash">-n</code> option corresponds to the desired number of processing cores.
+							</p>			
+							
+							<p>
+								A <code class="language-bash">./ADAP</code> folder is created, in which the successive calls to SU2_CFD and pyAMG are performed. Once all the adaptive iterations are done, the final adapted mesh and restart solution are outputted in the current directory.
+							</p>
+							
+							<h3>Results</h3>
+							
+							<p>
+								A comparison of the initial and final meshes/solutions is shown in the figure below. The lambda shock resolution is improved, while reducing the number of mesh vertices. 
+							</p>
+							
+							<figure>
+							  <img src="./images/testcases/m6_mesh_initial.jpg" alt="M6 wing, initial mesh">
+								<img src="./images/testcases/m6_shock_initial.jpg" alt="M6 wing, initial solution">
+							  <figcaption>ONERA M6 wing: initial surface mesh and solution (141537 vertices).</figcaption>
+							</figure>
+							
+							<figure>
+							  <img src="./images/testcases/m6_mesh_adapted.jpg" alt="M6 wing, adapted mesh">
+								<img src="./images/testcases/m6_shock_adapted.jpg" alt="M6 wing, adapted solution">
+							  <figcaption>ONERA M6 wing: adapted surface mesh and solution (48299 vertices).</figcaption>
+							</figure>
 							
 							<ul class="actions stacked">
 								<li><a href="#" class="button smooth-scroll-middle">Back to top</a></li>
